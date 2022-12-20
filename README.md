@@ -2,7 +2,7 @@
 Ray Tracer in Python based on Jamis Buck's Ray Tracing Challenge.
 
 ## 1. Setup
-# 1.1. Install Python
+### 1.1. Install Python
 Obviously a version of python 3 is required. The code has been tested on version 3.9.13. You can check you're version of python by running
 ```
 python --version
@@ -88,8 +88,8 @@ g.add_child(s3)
 ```
 The group needs to then be added to the world class instance.
 
-## 2.4. Materials
-### 2.4.1
+### 2.5. Materials
+#### 2.5.1
 By default all shapes have a white solid color i.e. rgb = (255,255,255). This can be changed by asigning a new solid_color class to the pat atrribute of the mat attribute of the shape for example, here is a red sphere:
 ```
 s = sphere()
@@ -118,9 +118,9 @@ Every object also has a material with attributes:
 </ul>
 All values must be >= 0. All values must be <= 1 except refractive_index and shininess.
 
-## 2.5. Lighting
+### 2.6. Lighting
 Currently the only light available is a point light.
-### 2.5.1 Point Light
+#### 2.6.1 Point Light
 This is a light source which radiates in all directions. To assign a point light
 ```
 w.light = point_light( position, intensity )
@@ -128,9 +128,9 @@ w.light = point_light( position, intensity )
 position: where the light is located
 intensity: The color of the source e.g. bright white light is color(1,1,1).
 
-## 2.6. Camera
+### 2.7. Camera
 Finally, we need to add a camera to our scene.
-### 2.6.1 Pinhole Camera
+#### 2.7.1 Pinhole Camera
 We assign a camera to our world as follows:
 ```
 cam = camera( canvas_width, canvas_height, field_of_view )
@@ -148,7 +148,7 @@ from: where the camera is located
 to: where the camera is pointing
 up: which direction is up, for example, if you want to take a picture with camera tilted or even upside-down!
 
-## 2.7. Render Image
+### 2.8. Render Image
 To render the image simply include these two lines
 ```
 image = render(cam, w)
