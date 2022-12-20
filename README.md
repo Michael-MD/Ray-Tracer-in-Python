@@ -92,7 +92,6 @@ g.add_child(s3)
 The group needs to then be added to the world class instance.
 
 ### 2.5. Materials
-#### 2.5.1
 By default all shapes have a white solid color i.e. rgb = (255,255,255). This can be changed by asigning a new solid_color class to the pat atrribute of the mat attribute of the shape for example, here is a red sphere:
 ```
 s = sphere()
