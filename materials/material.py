@@ -3,6 +3,11 @@ path.append("../linear_algebra")
 
 from linear_algebra import *
 from solid_pattern import solid_pattern
+from checkered_pattern import checkered_pattern
+from gradient_pattern import gradient_pattern
+from radial_gradient_pattern import radial_gradient_pattern
+from ring_pattern import ring_pattern
+from stripe_pattern import stripe_pattern
 
 class material:
 	def __init__(self):
