@@ -1,5 +1,5 @@
 # Ray-Tracer-in-Python
-Ray Tracer in Python based on Jamis Buck's Ray Tracing Challenge.
+Ray Tracer in Python based on Jamis Buck's Ray Tracing Challenge. As a courtesy, I would appreciate it if you email me first at mdei0001@student.monash.edu before using this code.
 
 ## 1. Setup
 ### 1.1. Install Python
