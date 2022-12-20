@@ -5,7 +5,7 @@ mag = np.linalg.norm
 dot = np.dot
 cross = np.cross
 inv = np.linalg.inv
-EPSILON = .1
+EPSILON = 1e-5
 
 def vector(x,y,z): return np.array([x,y,z,0])
 
