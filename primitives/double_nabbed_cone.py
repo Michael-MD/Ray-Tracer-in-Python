@@ -30,11 +30,11 @@ class double_nabbed_cone(shape):
 	def intersect_caps(self,r, xs = []):
 		if not self.isclosed:
 			return xs
-		t = (self.min - r.origin[1]) / r.dir[1]
+		t = (self.min - r.origin[1]) / r.direction[1]
 		if self.check_cap(r, t):
 			xs.append(intersection(t, self))
 
-		t = (self.max - r.origin[1]) / r.dir[1]
+		t = (self.max - r.origin[1]) / r.direction[1]
 		if self.check_cap(r, t):
 			xs.append(intersection(t, self))
 
@@ -42,7 +42,7 @@ class double_nabbed_cone(shape):
 
 
 	def local_intersect(self, r):
-		d = r.dir
+		d = r.direction
 		o = r.origin
 
 		a = d[0]**2 - d[1]**2+d[2]**2

@@ -14,9 +14,9 @@ class plane(shape):
 		return vector(0,1,0)
 
 	def local_intersect(self,r):
-		if abs(r.dir[1]) < EPSILON:	# ray parallel to plane
+		if abs(r.direction[1]) < EPSILON:	# ray parallel to plane
 			return np.array([])
-		t = -r.origin[1] / r.dir[1]
+		t = -r.origin[1] / r.direction[1]
 		return np.array([intersection(t,self)])
 
 	def bounds(self):

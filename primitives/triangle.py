@@ -33,7 +33,7 @@ class triangle(shape):
 		return self.normalv
 
 	def local_intersect(self,r):
-		dir_cross_e2 = vector( *np.cross(r.dir[0:3], self.e2[0:3]) )
+		dir_cross_e2 = vector( *np.cross(r.direction[0:3], self.e2[0:3]) )
 		det = np.dot(self.e1, dir_cross_e2)
 		if abs(det) < EPSILON:
 			return [] 
@@ -45,7 +45,7 @@ class triangle(shape):
 			return []
 
 		origin_cross_e1 = vector( *np.cross(p1_to_origin[0:3], self.e1[0:3]) )
-		v = f * np.dot(r.dir, origin_cross_e1)
+		v = f * np.dot(r.direction, origin_cross_e1)
 		if v < 0 or (u + v) > 1:
 			return [] 
 

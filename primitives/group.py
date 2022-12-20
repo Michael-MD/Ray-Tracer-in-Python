@@ -68,9 +68,9 @@ class group(shape):
 
 
 	def AABB_intersect(self,r):
-		xtmin, xtmax = self.check_axis(r.origin[0], r.dir[0], self.pmin[0], self.pmax[0])
-		ytmin, ytmax = self.check_axis(r.origin[1], r.dir[1], self.pmin[1], self.pmax[1])
-		ztmin, ztmax = self.check_axis(r.origin[2], r.dir[2], self.pmin[2], self.pmax[2])
+		xtmin, xtmax = self.check_axis(r.origin[0], r.direction[0], self.pmin[0], self.pmax[0])
+		ytmin, ytmax = self.check_axis(r.origin[1], r.direction[1], self.pmin[1], self.pmax[1])
+		ztmin, ztmax = self.check_axis(r.origin[2], r.direction[2], self.pmin[2], self.pmax[2])
 
 		tmin = max(xtmin, ytmin, ztmin)
 		tmax = min(xtmax, ytmax, ztmax)
@@ -92,7 +92,7 @@ class group(shape):
 
 		for s in self.collection:
 			m = inv(s.transform)
-			local_ray = ray(m@r.origin,m@r.dir)
+			local_ray = ray(m@r.origin,m@r.direction)
 			xs.extend( s.local_intersect(local_ray) )
 
 		return np.sort( np.array( xs ) )

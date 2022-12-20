@@ -9,7 +9,7 @@ class intersection:
 	def __le__(self, i): return True if self.t <= i.t else False
 
 
-def position_calc(r, t): return r.origin + r.dir*t
+def position_calc(r, t): return r.origin + r.direction*t
 
 def hit(xs):	# hit assumes xs is ordered
 	for x in xs:

@@ -27,14 +27,14 @@ class cylinder(shape):
 		return (x**2+z**2) <= 1
 
 	def intersect_caps(self,r, xs = []):
-		if not self.isclosed or abs(r.dir[1]) < EPSILON:
+		if not self.isclosed or abs(r.direction[1]) < EPSILON:
 			return xs
 
-		t = (self.min - r.origin[1]) / r.dir[1]
+		t = (self.min - r.origin[1]) / r.direction[1]
 		if self.check_cap(r, t):
 			xs.append(intersection(t, self))
 
-		t = (self.max - r.origin[1]) / r.dir[1]
+		t = (self.max - r.origin[1]) / r.direction[1]
 		if self.check_cap(r, t):
 			xs.append(intersection(t, self))
 
@@ -42,12 +42,12 @@ class cylinder(shape):
 
 
 	def local_intersect(self, r):
-		a = r.dir[0]**2 + r.dir[2]**2
+		a = r.direction[0]**2 + r.direction[2]**2
 
 		if abs(a) < EPSILON:
 			return self.intersect_caps(r)
 
-		b = 2 * r.origin[0] * r.dir[0] + 2 * r.origin[2] * r.dir[2]
+		b = 2 * r.origin[0] * r.direction[0] + 2 * r.origin[2] * r.direction[2]
 		c = r.origin[0]**2 + r.origin[2]**2 - 1
 		disc = b**2 - 4 * a * c
 		if disc < 0: return []

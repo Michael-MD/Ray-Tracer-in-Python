@@ -42,9 +42,9 @@ class prepare_computations:
 		self.t = i.t
 		self.object = i.object
 		self.p = position_calc(r, self.t)
-		self.eyev = -r.dir
+		self.eyev = -r.direction
 		self.normalv = normal_at(self.object, self.p)
-		self.reflectv = reflect(r.dir,self.normalv)
+		self.reflectv = reflect(r.direction,self.normalv)
 
 		if dot(self.normalv, self.eyev) < 0:
 			self.inside = True

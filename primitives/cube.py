@@ -29,9 +29,9 @@ class cube(shape):
 
 
 	def local_intersect(self,r):
-		xtmin, xtmax = self.check_axis(r.origin[0], r.dir[0])
-		ytmin, ytmax = self.check_axis(r.origin[1], r.dir[1])
-		ztmin, ztmax = self.check_axis(r.origin[2], r.dir[2])
+		xtmin, xtmax = self.check_axis(r.origin[0], r.direction[0])
+		ytmin, ytmax = self.check_axis(r.origin[1], r.direction[1])
+		ztmin, ztmax = self.check_axis(r.origin[2], r.direction[2])
 
 		tmin = max(xtmin, ytmin, ztmin)
 		tmax = min(xtmax, ytmax, ztmax)

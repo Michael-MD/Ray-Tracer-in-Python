@@ -14,8 +14,8 @@ class sphere(shape):
 
 	def local_intersect(self, r):
 		sphere_to_ray = r.origin - self.origin
-		a = dot(r.dir,r.dir)
-		b = 2 * dot(r.dir,sphere_to_ray)
+		a = dot(r.direction,r.direction)
+		b = 2 * dot(r.direction,sphere_to_ray)
 		c = dot(sphere_to_ray,sphere_to_ray) - 1
 
 		delta = b**2 - 4*a*c
