@@ -47,11 +47,14 @@ The other primitives as of writing this document are:
   <li>plane</li>
   <li>sphere</li>
   <li>triangle</li>
+  <li>obj_model</li>
 </ul>
 The triangle primitive expects three points during initilization for the three vertices. For example
+
 ```
 triangle(point(0,0,0),point(1,1,1),point(-1,0,1))
 ```
+obj_model expects an obj file. The class which reads the obj file is buggy so it should be replaced with a proper class but the one here does the job.
 Additional notes:
  - trangles are mostly useful only for models.
  - cylinder by default by default is capped and extends infinitly in both directions, this can be set by setting the min and max attributes. Removing caps from the cylinder is controlled using the isclosed boolean attribute.
@@ -159,4 +162,115 @@ image.to_ppm(filename)
 ## 3.1 Bounding Boxes
 To be more efficient, before calculating ray intersections with entire groups, the renderer will check if the ray intersects a axis-aligned-bounding box.
 
+# 4. Showcase
+Here is an example of a file:
+(images/sample_render.jpg)
+The code to generate is as follows:
+
+```
+from ray_tracer import *
+import numpy as np
+
+tau = 2*np.pi
+
+w = world()
+
+# -----------------   room walls  -----------------
+room_walls = group()
+
+floor = plane()
+floor.mat.reflective = .5
+floor.diffuse = .6
+floor.mat.pat = stripe_pattern(color(16/255, 227/255, 97/255),color(227/255, 16/255, 86/255))
+floor.mat.pat.transform = scaling(vector(.5,.5,.5))@rotation_y(tau/4)
+
+left_wall = plane()
+left_wall.transform = translation(vector(0,0,-10))@rotation_x(tau/4)
+
+right_wall = plane()
+right_wall.transform = translation(vector(0,0,5))@rotation_x(tau/4)
+
+back_wall = plane()
+back_wall.transform = translation(vector(-5,0,0))@rotation_z(tau/4)
+
+ceiling = plane()
+ceiling.transform = translation(vector(0,6,0))
+
+
+room_walls.add_child(floor)
+room_walls.add_child(left_wall)
+room_walls.add_child(right_wall)
+room_walls.add_child(back_wall)
+room_walls.add_child(ceiling)
+
+w.objects.append( room_walls )
+
+
+# -----------------   cylinder on cube  -----------------
+c_on_c = group()
+
+cu = cube()
+cu.transform = rotation_y(0.2*tau)@translation(vector(0,1,0))
+cu.mat.pat = solid_pattern(color(227/255, 16/255, 86/255))
+cu.mat.diffuse = .1
+cu.mat.transparency = .8
+cu.mat.specular = .1
+cu.mat.reflective = .6
+cu.mat.shininess = 50.
+
+cy = cylinder()
+cy.min = 2
+cy.max = 4
+cy.mat.pat = solid_pattern(color(35/255, 153/255, 186/255))
+cy.mat.pat.translation = scaling(vector(.1,.1,.1))
+
+c_on_c.transform = translation(vector(-1,0,0))
+
+c_on_c.add_child(cu)
+c_on_c.add_child(cy)
+
+w.objects.append( c_on_c )
+
+
+# -----------------    cone and sphere  -----------------
+c = cone()
+c.transform = scaling(vector(1,2,1))@translation(vector(1,1,-1.5))
+c.mat.pat = gradient_pattern(color(0.8,.3,.7),color(.7,.2,.3))
+
+s1 = sphere()
+s1.transform = translation(vector(1,1,1.5))
+s1.mat.transparency = .9
+s1.mat.diffuse = .1
+s1.mat.ambient = .05
+s1.mat.reflective = .95
+s1.mat.refractive_index = 1.5
+
+
+w.objects.append(c)
+w.objects.append(s1)
+
+# -----------------  teapot -----------------
+teapot = obj_model('sample_obj_files/teapot-low.obj')
+teapot.transform = translation(vector(0,0,-6))@scaling(vector(.2,.2,.2))@rotation_y(-0.2*tau)@rotation_x(-tau/4)
+teapot.mat.reflective = 1
+teapot.mat.diffuse = .05
+teapot.mat.specular = .05
+teapot.mat.ambient = .05
+teapot.mat.shininess = 50.
+w.objects.append(teapot)
+
+
+# -----------------  set up rest of scene -----------------
+
+w.light = point_light(point(10,3,-1), color(1, 1, 1))
+
+
+cam = pinhole_camera(1920, 960, 0.2*tau)
+cam.transform = view_transform(point(12,3,-3),point(0, 3, -3),vector(0, 1, 0))
+
+
+image = render(cam, w)
+image.to_ppm("test")
+
+```
 
