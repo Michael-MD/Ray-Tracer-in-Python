@@ -1,4 +1,5 @@
 from pattern import pattern
+import numpy as np
 
 class solid_pattern(pattern):
 	def __init__(self,a):

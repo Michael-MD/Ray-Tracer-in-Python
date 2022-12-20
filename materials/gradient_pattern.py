@@ -1,5 +1,5 @@
 from pattern import pattern
-
+import numpy as np
 
 class gradient_pattern(pattern):
 	def __init__(self,a,b):

@@ -16,7 +16,6 @@ class plane(shape):
 	def local_intersect(self,r):
 		if abs(r.dir[1]) < EPSILON:	# ray parallel to plane
 			return np.array([])
-
 		t = -r.origin[1] / r.dir[1]
 		return np.array([intersection(t,self)])
 

@@ -83,6 +83,20 @@ def normal_at(s,world_point):
 	return normalize(world_normal)
 
 
+def schlick(comps):
+	cos = dot( comps.eyev, comps.normalv )
+	if comps.n1 > comps.n2:
+		n = comps.n1 / comps.n2
+		sin2_t = n**2 * (1.0 - cos**2)
+		if sin2_t > 1.0:
+			return 1.0
+
+		cos_t = np.sqrt(1.0 - sin2_t)
+		cos = cos_t
+
+	r0 = ((comps.n1 - comps.n2) / (comps.n1 + comps.n2))**2
+	return r0 + (1 - r0) * (1 - cos)**5
+
 def shade_hit(w,comps, remaining):
 	shadowed = is_shadowed(w,comps.over_point)
 	surface = lighting(comps.object,w.light,comps.p, comps.eyev, comps.normalv, shadowed)

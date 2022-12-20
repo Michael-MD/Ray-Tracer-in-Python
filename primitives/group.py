@@ -29,7 +29,7 @@ class group(shape):
 			# transform points of cube in object space to world space
 			for p in cube_ps_object_space:
 				a = np.array( point(*p) )
-				cube_ps_world_space.append( s.tr @ a )
+				cube_ps_world_space.append( s.transform @ a )
 
 			# find minimum and maximum of new cube in world space
 			cube_ps_world_space = np.array(cube_ps_world_space)
@@ -91,7 +91,7 @@ class group(shape):
 			return np.array( xs )
 
 		for s in self.collection:
-			m = inv(s.tr)
+			m = inv(s.transform)
 			local_ray = ray(m@r.origin,m@r.dir)
 			xs.extend( s.local_intersect(local_ray) )
 
