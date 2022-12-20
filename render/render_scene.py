@@ -11,13 +11,13 @@ from ray_intersection import *
 from world import *
 from group_transform import *
 from reflect import reflect
-
+from tqdm import tqdm
 
 def render(cam, w):
 	image = ppmFile(cam.hsize, cam.vsize)
-	for y in range( 0, cam.vsize ):
+	for y in tqdm(range(0, cam.vsize)):
 		print(y)
-		for x in range( 0, cam.hsize ):
+		for x in range(0, cam.hsize):
 			r = ray_for_pixel(cam, x, y)
 			c = color_at(w, r)
 			image.write_pixel(x, y, c)
