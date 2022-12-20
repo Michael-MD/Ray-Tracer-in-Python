@@ -5,10 +5,13 @@ path.append("../ray_casting")
 
 from shape import *
 from ray_intersection import intersection
-from linear_algebra import dot
+from linear_algebra import *
 import numpy as np
 
 class sphere(shape):
+	def bounds(self):
+		return [ point(-1,-1,-1), point(1,1,1) ]
+
 	def local_intersect(self, r):
 		sphere_to_ray = r.origin - self.origin
 		a = dot(r.dir,r.dir)
