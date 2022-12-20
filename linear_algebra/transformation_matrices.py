@@ -16,17 +16,17 @@ def scaling(v):
 
 def rotation_x(r):
 	A = np.eye(4)
-	A[x,x] = np.cos(r)
-	A[x,z] = np.sin(r)
-	A[z,x] = -np.sin(r)
+	A[y,y] = np.cos(r)
+	A[y,z] = -np.sin(r)
+	A[z,y] = np.sin(r)
 	A[z,z] = np.cos(r)
 	return A
 
 def rotation_y(r):
 	A = np.eye(4)
-	A[y,y] = np.cos(r)
-	A[y,z] = np.sin(r)
-	A[z,y] = -np.sin(r)
+	A[x,x] = np.cos(r)
+	A[x,z] = np.sin(r)
+	A[z,x] = -np.sin(r)
 	A[z,z] = np.cos(r)
 	return A
 

@@ -6,4 +6,4 @@ from double_nabbed_cone import double_nabbed_cone
 from cone import cone
 from group import group
 from triangle import triangle
-# from obj_model import obj_model
+from obj_model import *
