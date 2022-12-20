@@ -120,7 +120,7 @@ All values must be >= 0. All values must be <= 1 except refractive_index and shi
 
 ## 2.5. Lighting
 Currently the only light available is a point light.
-### 4.1 Point Light
+### 2.5.1 Point Light
 This is a light source which radiates in all directions. To assign a point light
 ```
 w.light = point_light( position, intensity )
@@ -130,7 +130,7 @@ intensity: The color of the source e.g. bright white light is color(1,1,1).
 
 ## 2.6. Camera
 Finally, we need to add a camera to our scene.
-### 5.1 Pinhole Camera
+### 2.6.1 Pinhole Camera
 We assign a camera to our world as follows:
 ```
 cam = camera( canvas_width, canvas_height, field_of_view )
