@@ -72,6 +72,7 @@ Transformation matrices can be used for any object with a transform attribute. D
   <li>shearing</li>
 </ul>
 These all take 4x1 numpy arrays except shearing which has function handle given by
+
 ```
 def shearing(xy,xz,yx,yz,zx,zy)
 ```
@@ -163,7 +164,9 @@ To be more efficient, before calculating ray intersections with entire groups, t
 
 # 4. Showcase
 Here is an example of a file:
-(images/sample_render.png)
+
+![Alt text](images/sample_render.png?raw=true "Optional Title")
+
 The code to generate this is as follows:
 
 ```
