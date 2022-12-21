@@ -163,7 +163,8 @@ To be more efficient, before calculating ray intersections with entire groups, t
 
 # 4. Showcase
 Here is an example of a file:
-(images/sample_render.png)
+![Alt text](images/sample_render.png?raw=true "Optional Title")
+
 The code to generate is as follows:
 
 ```
