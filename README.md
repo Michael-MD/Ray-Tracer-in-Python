@@ -13,7 +13,7 @@ This can be done by cloing the repo using
 ```
 git clone https://github.com/Michael-MD/Ray-Tracer-in-Python.git
 ```
-or simply zipping and download directly from github.
+or simply zipping and download directly from github. You'll need some standard packages such as numpy and tqdm. I haven't included a requirements file since these are common packages and you likely have them already.
 
 ## 2. Usage
 ### 2.1. Creating World
@@ -95,7 +95,7 @@ The group needs to then be added to the world class instance.
 By default all shapes have a white solid color i.e. rgb = (255,255,255). This can be changed by asigning a new solid_color class to the pat atrribute of the mat attribute of the shape for example, here is a red sphere:
 ```
 s = sphere()
-s.mat.pat = solid_color( color(1,0,0) )
+s.mat.pat = solid_color(color(1,0,0))
 ```
 Observe all colors are in the range [0,1].
 For a more interesting pattern, here are some choices:
@@ -163,7 +163,7 @@ To be more efficient, before calculating ray intersections with entire groups, t
 
 # 4. Showcase
 Here is an example of a file:
-(images/sample_render.jpg)
+(images/sample_render.png)
 The code to generate is as follows:
 
 ```
@@ -251,11 +251,6 @@ w.objects.append(s1)
 # -----------------  teapot -----------------
 teapot = obj_model('sample_obj_files/teapot-low.obj')
 teapot.transform = translation(vector(0,0,-6))@scaling(vector(.2,.2,.2))@rotation_y(-0.2*tau)@rotation_x(-tau/4)
-teapot.mat.reflective = 1
-teapot.mat.diffuse = .05
-teapot.mat.specular = .05
-teapot.mat.ambient = .05
-teapot.mat.shininess = 50.
 w.objects.append(teapot)
 
 
@@ -272,4 +267,3 @@ image = render(cam, w)
 image.to_ppm("test")
 
 ```
-
