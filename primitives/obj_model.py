@@ -51,4 +51,5 @@ class obj_model(obj_file, group):
 
 		for face in self.faces:
 			t = triangle( *face )
+			t.mat = self.mat
 			self.add_child( t )

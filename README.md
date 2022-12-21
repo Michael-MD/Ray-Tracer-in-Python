@@ -164,7 +164,7 @@ To be more efficient, before calculating ray intersections with entire groups, t
 # 4. Showcase
 Here is an example of a file:
 (images/sample_render.png)
-The code to generate is as follows:
+The code to generate this is as follows:
 
 ```
 from ray_tracer import *
