@@ -72,6 +72,7 @@ Transformation matrices can be used for any object with a transform attribute. D
   <li>shearing</li>
 </ul>
 These all take 4x1 numpy arrays except shearing which has function handle given by
+
 ```
 def shearing(xy,xz,yx,yz,zx,zy)
 ```
