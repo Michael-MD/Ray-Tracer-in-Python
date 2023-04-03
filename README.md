@@ -3,7 +3,7 @@ Ray Tracer in Python based on Jamis Buck's Ray Tracing Challenge. As a courtesy,
 
 ## 1. Setup
 ### 1.1. Install Python
-Obviously a version of python 3 is required. The code has been tested on version 3.9.13. You can check you're version of python by running
+Obviously a version of python 3 is required. The code has been tested on version 3.9.13. You can check your version of python by running
 ```
 python --version
 ```
